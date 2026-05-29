@@ -1,0 +1,32 @@
+{
+  "name": "robo-part-discover",
+  "version": "0.1.0",
+  "private": true,
+  "description": "bolt.new for robotics — describe your robot, get BOM, firmware, wiring diagrams, and software stack",
+  "workspaces": [
+    "packages/api",
+    "packages/ui"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:ui\"",
+    "dev:api": "npm run dev --workspace=packages/api",
+    "dev:ui": "npm run dev --workspace=packages/ui",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces --if-present",
+    "test:watch": "npm run test:watch --workspace=packages/api",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "lint": "eslint \"packages/*/src/**/*.{ts,tsx}\"",
+    "format": "prettier --write \"packages/*/src/**/*.{ts,tsx,json}\"",
+    "db:migrate": "npm run db:migrate --workspace=packages/api",
+    "db:studio": "npm run db:studio --workspace=packages/api",
+    "db:seed": "npm run db:seed --workspace=packages/api"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.0"
+  }
+}
